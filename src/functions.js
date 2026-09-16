@@ -1,16 +1,34 @@
-const {apprenants} = require("./data")
+const { apprenants } = require("./data");
 
-console.log(apprenants)
-function afichageMenu(){
-	console.log("=======================================")
-	console.log("=        SAS PROGRESS CONSOLE         =")
-	console.log("=======================================")
-	console.log("")
-	console.log("\n")
-	console.log("\n")
-	console.log("\n")
-	console.log("\n")
-	console.log("\n")
+console.log(apprenants);
 
-
+//function pour Afficher le choix de menu
+function afichageMenu() {
+  console.log("\n=======================================");
+  console.log("=        SAS PROGRESS CONSOLE         =");
+  console.log("=======================================");
+  console.log();
+  console.log("1- Afficher le tableau de bord");
+  console.log("2- Afficher la liste des apprenants");
+  console.log("3- Ajouter un apprenant");
+  console.log("4- Consulter un apprenant par identifiant");
+  console.log("5- Ajouter ou modifier le résultat d'une journée");
+  console.log("6- Rechercher un apprenant par nom");
+  console.log("7- Filtrer les apprenants par niveau");
+  console.log("8- Trier les apprenants par progression décroissante");
+  console.log("9- Trier les apprenants par ordre alphabétique");
+  console.log("0- Quitter");
+  console.log();
+  console.log("=======================================\n");
 }
+module.exports = {
+  afichageMenu,
+  dicoration
+};
+
+function dicoration(Print) {
+  console.log("\n---------------------------------------");
+  console.log(Print);
+  console.log("---------------------------------------\n");
+}
+
