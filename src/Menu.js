@@ -4,7 +4,8 @@ const {
   afichageMenu,
   dicoration,
   AfficherApprenants,
-  ajouter_Apprenant
+  ajouter_Apprenant,
+  consulterApprenantParId
 } = require("./functions");
 
 let running = true;
@@ -35,7 +36,10 @@ while (running) {
       break;
 
     case "4":
+
       dicoration("4- Consulter un apprenant par identifiant: Coming Soon");
+	  const id = prompt("Entrez un identifiant numérique d'apprenants: ")
+	  consulterApprenantParId(apprenants, id)
       break;
 
     case "5":

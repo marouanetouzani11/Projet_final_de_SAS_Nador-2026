@@ -4,9 +4,8 @@ module.exports = {
   dicoration,
   AfficherApprenants,
   ajouter_Apprenant,
+  consulterApprenantParId,
 };
-
-let id = 3;
 
 //function pour Afficher le choix de menu
 function afichageMenu() {
@@ -78,3 +77,22 @@ function ajouter_Apprenant(nomComplet, ville) {
   apprenants.push(Newapprenant);
 }
 
+//this function search for un apprenant
+function consulterApprenantParId(id) {
+  if (id < 1 || typeof id !== Number) {
+    console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
+    return;
+  }
+
+  for (let i = 0; i < liste.length; i++) {
+    let apprenantHold = [];
+    apprenantHold = apprenants[i];
+
+    if (apprenantHold.id == id) {
+      const id = String(apprenantHold[i].id).padEnd(4);
+      const nom = apprenantHold[i].nomComplet.padEnd(20);
+      const ville = apprenantHold[i].ville.padEnd(10);
+      console.log(`| ${id} | ${nom} | ${ville} |`);
+    }
+  }
+}
