@@ -2,16 +2,14 @@ const { apprenants } = require("./data");
 module.exports = {
   afichageMenu,
   dicoration,
-  AfficherApprenants
+  AfficherApprenants,
 };
-
-// console.log(apprenants);
 
 //function pour Afficher le choix de menu
 function afichageMenu() {
-  console.log("\n=======================================");
+  console.log("\n============================================");
   console.log("=        SAS PROGRESS CONSOLE         =");
-  console.log("=======================================");
+  console.log("============================================");
   console.log();
   console.log("1- Afficher le tableau de bord");
   console.log("2- Afficher la liste des apprenants");
@@ -24,37 +22,44 @@ function afichageMenu() {
   console.log("9- Trier les apprenants par ordre alphabétique");
   console.log("0- Quitter");
   console.log();
-  console.log("=======================================\n");
+  console.log("============================================\n");
+  console.log("============================================\n");
 }
 
-//this function for add dicoration the choice
+//this Function just add some decoration to the output
 function dicoration(Print) {
-  console.log("\n---------------------------------------");
+  console.log("\n--------------------------------------------");
   console.log(Print);
-  console.log("---------------------------------------\n");
 }
 
-function  AfficherApprenants(objs){
-	if(objs.length === 0){
-		console.log("Aucun apprenant dans la base de données")
-	}
+//this function only print des apprenants one by one.
+function AfficherApprenants(objs) {
+  if (objs.length === 0) {
+    console.log("Aucun apprenant dans la base de données");
+  }
 
-	console.log("| " + "ID".padEnd(4) + 
-	" | " + "Nome".padEnd(20) + 
-	" | " + "Ville".padEnd(10) 
-	+ " |")
+  console.log("--------------------------------------------");
+  console.log(
+    "| " +
+      "ID".padEnd(4) +
+      " | " +
+      "Nome".padEnd(20) +
+      " | " +
+      "Ville".padEnd(10) +
+      " |",
+  );
+  console.log("--------------------------------------------");
 
-
-	
-	for (let i = 0; i < objs.length; i++){
-		const id =	objs[i].id 
-		const nom =  objs[i].nomComplet 
-		const ville = objs[i].ville 
-		console.log();
-	}
-
-	
-
-
+  for (let i = 0; i < objs.length; i++) {
+    const id = String(objs[i].id).padEnd(4);
+    const nom = objs[i].nomComplet.padEnd(20);
+    const ville = objs[i].ville.padEnd(10);
+    console.log(`| ${id} | ${nom} | ${ville} |`);
+  }
+  console.log("--------------------------------------------");
 }
 
+//this function add apprenants
+function ajouter_Apprenant(){
+
+}
