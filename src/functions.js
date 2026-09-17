@@ -1,6 +1,11 @@
 const { apprenants } = require("./data");
+module.exports = {
+  afichageMenu,
+  dicoration,
+  AfficherApprenants
+};
 
-console.log(apprenants);
+// console.log(apprenants);
 
 //function pour Afficher le choix de menu
 function afichageMenu() {
@@ -21,14 +26,35 @@ function afichageMenu() {
   console.log();
   console.log("=======================================\n");
 }
-module.exports = {
-  afichageMenu,
-  dicoration
-};
 
+//this function for add dicoration the choice
 function dicoration(Print) {
   console.log("\n---------------------------------------");
   console.log(Print);
   console.log("---------------------------------------\n");
+}
+
+function  AfficherApprenants(objs){
+	if(objs.length === 0){
+		console.log("Aucun apprenant dans la base de données")
+	}
+
+	console.log("| " + "ID".padEnd(4) + 
+	" | " + "Nome".padEnd(20) + 
+	" | " + "Ville".padEnd(10) 
+	+ " |")
+
+
+	
+	for (let i = 0; i < objs.length; i++){
+		const id =	objs[i].id 
+		const nom =  objs[i].nomComplet 
+		const ville = objs[i].ville 
+		console.log();
+	}
+
+	
+
+
 }
 
