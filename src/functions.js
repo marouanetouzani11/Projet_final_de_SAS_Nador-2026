@@ -87,7 +87,9 @@ function consulterApprenantParId(id) {
   for (let i = 0; i < apprenants.length; i++) {
 
     if (apprenants[i].id === id) {
-      console.log(apprenants[i])
+		console.log(apprenants[i].id);
+		console.log(apprenants[i].nomComplet)
+		console.log(apprenants[i].ville)
     }
   }
 }
