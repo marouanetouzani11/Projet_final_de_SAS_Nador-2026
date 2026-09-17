@@ -3,7 +3,10 @@ module.exports = {
   afichageMenu,
   dicoration,
   AfficherApprenants,
+  ajouter_Apprenant,
 };
+
+let id = 3;
 
 //function pour Afficher le choix de menu
 function afichageMenu() {
@@ -32,12 +35,8 @@ function dicoration(Print) {
   console.log(Print);
 }
 
-//this function only print des apprenants one by one.
+//this function choice 2 only print des apprenants one by one.
 function AfficherApprenants(objs) {
-  if (objs.length === 0) {
-    console.log("Aucun apprenant dans la base de données");
-  }
-
   console.log("--------------------------------------------");
   console.log(
     "| " +
@@ -59,7 +58,23 @@ function AfficherApprenants(objs) {
   console.log("--------------------------------------------");
 }
 
-//this function add apprenants
-function ajouter_Apprenant(){
+//this function choice 2 add apprenants
+function ajouter_Apprenant(nomComplet, ville) {
+  const nomPropre = nomComplet.trim();
+  const villePropre = ville.trim();
 
+  if (nomPropre === "" || ville === "") {
+    console.log("Erreur : Le nom ne doit pas être vide.");
+  }
+
+  const Newapprenant = {
+    id: apprenants.length + 1,
+    nomComplet: nomPropre,
+    ville: villePropre,
+    resultats: [],
+  };
+
+  console.log(Newapprenant);
+  apprenants.push(Newapprenant);
 }
+

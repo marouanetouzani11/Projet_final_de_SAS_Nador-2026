@@ -1,19 +1,22 @@
-const prompt = require("prompt-sync")();
-
-const { afichageMenu } = require("./functions");
-const { dicoration } = require("./functions");
-const { AfficherApprenants } = require("./functions");
+const prompt = require("prompt-sync")({ sigint: true });
 const { apprenants } = require("./data");
+const {
+  afichageMenu,
+  dicoration,
+  AfficherApprenants,
+  ajouter_Apprenant
+} = require("./functions");
 
 let running = true;
-while (running) {
-  console.log("\n\n");
 
+while (running) {
   afichageMenu();
 
-  console.log("\n\n");
+  let input = prompt("Votre Choix: ");
+  if (!input) continue;
 
-  let choix = prompt("Votre Choix: ").trim();
+  let choix = input.trim();
+
   switch (choix) {
     case "1":
       dicoration("1- Afficher le tableau de bord: Coming Soon");
@@ -21,14 +24,14 @@ while (running) {
 
     case "2":
       dicoration("2- Afficher la liste des apprenants.");
-      console.log();
       AfficherApprenants(apprenants);
-      console.log();
-
       break;
 
     case "3":
-      dicoration("3- Ajouter un apprenant: Coming Soon");
+      dicoration("3- Ajouter un apprenant");
+      const nom = prompt("Entrez le nom complet : ");
+      const ville = prompt("Entrez la ville : ");
+      ajouter_Apprenant(nom, ville);
       break;
 
     case "4":
@@ -36,9 +39,7 @@ while (running) {
       break;
 
     case "5":
-      dicoration(
-        "5- Ajouter ou modifier le résultat d'une journée: Coming Soon",
-      );
+      dicoration("5- Ajouter ou modifier le résultat d'une journée: Coming Soon");
       break;
 
     case "6":
@@ -50,9 +51,7 @@ while (running) {
       break;
 
     case "8":
-      dicoration(
-        "8- Trier les apprenants par progression décroissante: Coming Soon",
-      );
+      dicoration("8- Trier les apprenants par progression décroissante: Coming Soon");
       break;
 
     case "9":
@@ -60,10 +59,11 @@ while (running) {
       break;
 
     case "0":
-      dicoration("Au revoir ");
+      dicoration("Au revoir !");
       running = false;
       break;
+
     default:
-      console.log("Choix invalide.");
+      console.log("Choix invalide. Veuillez entrer un nombre entre 0 et 9.");
   }
 }
