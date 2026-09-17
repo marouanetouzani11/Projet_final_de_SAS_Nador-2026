@@ -79,20 +79,15 @@ function ajouter_Apprenant(nomComplet, ville) {
 
 //this function search for un apprenant
 function consulterApprenantParId(id) {
-  if (id < 1 || typeof id !== Number) {
+  if (id < 1 ) {
     console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
     return;
   }
 
-  for (let i = 0; i < liste.length; i++) {
-    let apprenantHold = [];
-    apprenantHold = apprenants[i];
+  for (let i = 0; i < apprenants.length; i++) {
 
-    if (apprenantHold.id == id) {
-      const id = String(apprenantHold[i].id).padEnd(4);
-      const nom = apprenantHold[i].nomComplet.padEnd(20);
-      const ville = apprenantHold[i].ville.padEnd(10);
-      console.log(`| ${id} | ${nom} | ${ville} |`);
+    if (apprenants[i].id === id) {
+      console.log(apprenants[i])
     }
   }
 }
