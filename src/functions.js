@@ -1,3 +1,4 @@
+const prompt = require("prompt-sync")({ sigint: true });
 const { apprenants } = require("./data");
 module.exports = {
   afichageMenu,
@@ -9,6 +10,8 @@ module.exports = {
   nomaliserNom,
   Ajouter_modifier_résultat,
 };
+
+
 
 //function pour Afficher les choix de menu
 function afichageMenu() {
@@ -31,6 +34,8 @@ function afichageMenu() {
   console.log("============================================\n");
 }
 
+
+
 //this function make the name I inter more better it removes extra spaces and makes the name lower case
 function nomaliserNom(name) {
   let cleanName = name.toLowerCase().trim();
@@ -43,12 +48,16 @@ function nomaliserNom(name) {
   return cleanName;
 }
 
+
+
 //this Function just add some decoration to the output
 function dicoration(Print) {
   console.log("\n--------------------------------------------");
   console.log(Print);
   console.log("--------------------------------------------\n");
 }
+
+
 
 //this function choice 2 only print des apprenants one by one.
 function AfficherApprenants(objs) {
@@ -73,6 +82,8 @@ function AfficherApprenants(objs) {
   console.log("--------------------------------------------");
 }
 
+
+
 //this function choice 2 add apprenants
 function ajouter_Apprenant(nomComplet, ville) {
   const nomPropre = nomaliserNom(nomComplet);
@@ -93,6 +104,8 @@ function ajouter_Apprenant(nomComplet, ville) {
   apprenants.push(Newapprenant);
 }
 
+
+
 //this function search for un apprenant
 function consulterApprenantParId(id) {
   if (id < 1 || id > apprenants.length) {
@@ -109,12 +122,14 @@ function consulterApprenantParId(id) {
   }
 }
 
+
+
 //this function search by name for an apprenants
 function Rechercher_par_nom(Nom) {
   if (typeof Nom !== "string") {
-	console.log();
+    console.log();
     console.log("=>La donnée fournie n'est pas une chaîne de caractères.");
-	console.log();
+    console.log();
   }
 
   let nomHolder = Nom.trim().toLowerCase();
@@ -132,20 +147,20 @@ function Rechercher_par_nom(Nom) {
   console.log(result);
 }
 
-function Ajouter_modifier_résultat(id) {
-  const numericId = Number(id);
 
+
+function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines, challengeTermine) {
+  const numericId = Number(id);
   if (isNaN(numericId) || numericId < 1) {
     console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
     return null;
   }
 
   let etudiantTrouve = null;
-
   for (let i = 0; i < apprenants.length; i++) {
     if (apprenants[i].id === numericId) {
       etudiantTrouve = apprenants[i];
-      break; 
+      break;
     }
   }
 
@@ -154,6 +169,55 @@ function Ajouter_modifier_résultat(id) {
     return null;
   }
 
-  console.log("Apprenant trouvé : " + etudiantTrouve.nomComplet);
+  const numericJour = Number(jour);
+  if (isNaN(numericJour) || numericJour < 1 || numericJour > 7) {
+    console.log("Erreur : Le numéro de jour valide est compris entre 1 et 7.");
+    return null;
+  }
+
+  const numerictotalExercices = Number(totalExercices);
+  if (isNaN(numerictotalExercices) || numerictotalExercices < 1 || numerictotalExercices > 20) {
+    console.log("Erreur : Le numéro de total Exercices valide est compris entre 1 et 20.");
+    return null;
+  }
+
+  const numericExercicesTermines = Number(exercicesTermines);
+  if (
+    isNaN(numericExercicesTermines) || numericExercicesTermines < 0 || numericExercicesTermines > numerictotalExercices
+  ) {
+    console.log("Erreur : Les exercices terminés doivent être compris entre 0 et " + numerictotalExercices + ".");
+    return null;
+  }
+
+  const estChallengeValide =
+    challengeTermine === true ||
+    challengeTermine === "o" ||
+    challengeTermine === "oui" ||
+    challengeTermine === "true";
+
+  let jourExistant = false;
+
+  for (let i = 0; i < etudiantTrouve.resultats.length; i++) {
+    if (etudiantTrouve.resultats[i].jour === numericJour) {
+      etudiantTrouve.resultats[i].totalExercices = numerictotalExercices;
+      etudiantTrouve.resultats[i].exercicesTermines = numericExercicesTermines;
+      etudiantTrouve.resultats[i].challengeTermine = estChallengeValide;
+      jourExistant = true;
+      console.log(`Résultat du Jour ${numericJour} mis à jour pour ${etudiantTrouve.nomComplet}.`);
+      break;
+    }
+  }
+
+  if (!jourExistant) {
+    const nouveauResultat = {
+      jour: numericJour,
+      exercicesTermines: numericExercicesTermines,
+      totalExercices: numerictotalExercices,
+      challengeTermine: estChallengeValide,
+    };
+    etudiantTrouve.resultats.push(nouveauResultat);
+    console.log(`Résultat du Jour ${numericJour} ajouté avec succès pour ${etudiantTrouve.nomComplet}.`);
+  }
+
   return etudiantTrouve;
 }
