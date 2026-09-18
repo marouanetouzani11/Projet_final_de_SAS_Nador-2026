@@ -6,6 +6,7 @@ module.exports = {
   ajouter_Apprenant,
   consulterApprenantParId,
   Rechercher_par_nom,
+  nomaliserNom,
 };
 
 //function pour Afficher le choix de menu
@@ -27,6 +28,17 @@ function afichageMenu() {
   console.log();
   console.log("============================================\n");
   console.log("============================================\n");
+}
+
+//this function make the name I inter more better it removes extra spaces and makes the name lower case
+function nomaliserNom(name) {
+  let cleanName = name.toLowerCase().trim();
+  //I used this / it means the begginig of the command
+  //I used this \s it means space and + measn extra spaces
+  //I used this /g,
+  //I used this " " it means reaplace with space
+  cleanName = cleanName.replace(/\s+ /g, " ");
+  return cleanName;
 }
 
 //this Function just add some decoration to the output
@@ -60,8 +72,8 @@ function AfficherApprenants(objs) {
 
 //this function choice 2 add apprenants
 function ajouter_Apprenant(nomComplet, ville) {
-  const nomPropre = nomComplet.trim();
-  const villePropre = ville.trim();
+  const nomPropre = nomaliserNom(nomComplet)
+  const villePropre = ville.trim().toLowerCase();
 
   if (nomPropre === "" || ville === "") {
     console.log("Erreur : Le nom ne doit pas être vide.");
@@ -97,15 +109,19 @@ function consulterApprenantParId(id) {
 //this function search by name for an apprenants
 function Rechercher_par_nom(Nom) {
   if (typeof Nom !== "string") {
-  console.log("La donnée fournie n'est pas une chaîne de caractères.");
-}
+    console.log("La donnée fournie n'est pas une chaîne de caractères.");
+  }
+
+  let nomHolder = Nom.trim().toLowerCase();
+  let result = [];
 
   for (let i = 0; i < apprenants.length; i++) {
-    if (apprenants[i].nomComplet.toLowerCase().includes(Nom.toLowerCase())) {
-      dicoration(apprenants[i])
-	  return;
-    }else{
-		dicoration("Ce nom n'existe pas.")
-	}
+    if (apprenants[i].nomComplet.toLowerCase().includes(nomHolder) == true) {
+      result.push(apprenants[i].nomComplet.toLowerCase());
+    }
   }
+  if (result.length === 0) {
+    console.log("Il n'y a pas d'apprenant portant ce nom.");
+  }
+  console.log(result);
 }
