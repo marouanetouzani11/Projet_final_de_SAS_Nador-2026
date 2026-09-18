@@ -7,13 +7,13 @@ module.exports = {
   consulterApprenantParId,
   Rechercher_par_nom,
   nomaliserNom,
-  Ajouter_modifier_résultat
+  Ajouter_modifier_résultat,
 };
 
 //function pour Afficher les choix de menu
 function afichageMenu() {
   console.log("\n============================================");
-  console.log("=        SAS PROGRESS CONSOLE         =");
+  console.log("=        	 SAS PROGRESS CONSOLE         =");
   console.log("============================================");
   console.log();
   console.log("1- Afficher le tableau de bord");
@@ -34,7 +34,7 @@ function afichageMenu() {
 //this function make the name I inter more better it removes extra spaces and makes the name lower case
 function nomaliserNom(name) {
   let cleanName = name.toLowerCase().trim();
-  
+
   //I used this / it means the begginig of the command
   //I used this \s it means space and + measn extra spaces
   //I used this /g,
@@ -47,6 +47,7 @@ function nomaliserNom(name) {
 function dicoration(Print) {
   console.log("\n--------------------------------------------");
   console.log(Print);
+  console.log("--------------------------------------------\n");
 }
 
 //this function choice 2 only print des apprenants one by one.
@@ -74,11 +75,11 @@ function AfficherApprenants(objs) {
 
 //this function choice 2 add apprenants
 function ajouter_Apprenant(nomComplet, ville) {
-  const nomPropre = nomaliserNom(nomComplet)
+  const nomPropre = nomaliserNom(nomComplet);
   const villePropre = ville.trim().toLowerCase();
 
   if (nomPropre === "" || ville === "") {
-    console.log("Erreur : Le nom ne doit pas être vide.");
+    console.log("=>Erreur : Le nom ne doit pas être vide.");
   }
 
   const Newapprenant = {
@@ -95,7 +96,7 @@ function ajouter_Apprenant(nomComplet, ville) {
 //this function search for un apprenant
 function consulterApprenantParId(id) {
   if (id < 1 || id > apprenants.length) {
-    console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
+    console.log("=>Erreur : Veuillez entrer un identifiant numérique valide.");
     return;
   }
 
@@ -111,7 +112,9 @@ function consulterApprenantParId(id) {
 //this function search by name for an apprenants
 function Rechercher_par_nom(Nom) {
   if (typeof Nom !== "string") {
-    console.log("La donnée fournie n'est pas une chaîne de caractères.");
+	console.log();
+    console.log("=>La donnée fournie n'est pas une chaîne de caractères.");
+	console.log();
   }
 
   let nomHolder = Nom.trim().toLowerCase();
@@ -123,20 +126,34 @@ function Rechercher_par_nom(Nom) {
     }
   }
   if (result.length === 0) {
-    console.log("Il n'y a pas d'apprenant portant ce nom.");
-	return
+    console.log("=>Il n'y a pas d'apprenant portant ce nom.");
+    return;
   }
   console.log(result);
 }
 
+function Ajouter_modifier_résultat(id) {
+  const numericId = Number(id);
 
-function Ajouter_modifier_résultat(id){
-	let cleanId = id.trim()
-	if(typeof cleanId == "number"){
-		for (let i = 0; i < apprenants.length; i++){
-			if(cleanId === apprenants[i].id){
-				console.log(apprenants[i])
-			}
-		}
-	}
+  if (isNaN(numericId) || numericId < 1) {
+    console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
+    return null;
+  }
+
+  let etudiantTrouve = null;
+
+  for (let i = 0; i < apprenants.length; i++) {
+    if (apprenants[i].id === numericId) {
+      etudiantTrouve = apprenants[i];
+      break; 
+    }
+  }
+
+  if (etudiantTrouve === null) {
+    console.log("Erreur : Aucun apprenant trouvé avec cet identifiant.");
+    return null;
+  }
+
+  console.log("Apprenant trouvé : " + etudiantTrouve.nomComplet);
+  return etudiantTrouve;
 }
