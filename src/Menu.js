@@ -5,8 +5,10 @@ const {
   dicoration,
   AfficherApprenants,
   ajouter_Apprenant,
-  consulterApprenantParId
+  consulterApprenantParId,
+  Rechercher_par_nom
 } = require("./functions");
+
 
 let running = true;
 
@@ -48,7 +50,10 @@ while (running) {
       break;
 
     case "6":
-      dicoration("6- Rechercher un apprenant par nom: Coming Soon");
+      dicoration("6- Rechercher un apprenant par nom");
+	  AfficherApprenants(apprenants);
+	  let Nom = prompt("Saisissez le nom que vous recherchez: ")
+	  Rechercher_par_nom(Nom)
       break;
 
     case "7":

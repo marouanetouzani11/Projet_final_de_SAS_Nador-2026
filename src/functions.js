@@ -5,6 +5,7 @@ module.exports = {
   AfficherApprenants,
   ajouter_Apprenant,
   consulterApprenantParId,
+  Rechercher_par_nom,
 };
 
 //function pour Afficher le choix de menu
@@ -94,6 +95,17 @@ function consulterApprenantParId(id) {
 }
 
 //this function search by name for an apprenants
-function Rechercher_par_nom(Nom){
+function Rechercher_par_nom(Nom) {
+  if (typeof Nom !== "string") {
+  console.log("La donnée fournie n'est pas une chaîne de caractères.");
+}
 
+  for (let i = 0; i < apprenants.length; i++) {
+    if (apprenants[i].nomComplet.toLowerCase().includes(Nom.toLowerCase())) {
+      dicoration(apprenants[i])
+	  return;
+    }else{
+		dicoration("Ce nom n'existe pas.")
+	}
+  }
 }
