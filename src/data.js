@@ -33,14 +33,14 @@ const apprenants = [
   },
   {
     id: 3,
-    nomComplet: "Yassine Code",
-    ville: "Oujda",
+    nomComplet: "Aymane Bombes",
+    ville: "El hajeb",
     resultats: [
       {
         jour: 1,
-        exercicesTermines: 18,
+        exercicesTermines: 20,
         totalExercices: 20,
-        challengeTermine: false,
+        challengeTermine: true,
       },
     ],
   },

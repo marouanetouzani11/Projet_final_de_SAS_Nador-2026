@@ -37,7 +37,8 @@ while (running) {
 
     case "4":
 
-      dicoration("4- Consulter un apprenant par identifiant: Coming Soon");
+      dicoration("4- Consulter un apprenant par identifiant");
+	  AfficherApprenants(apprenants);
 	  const id = Number(prompt("Entrez un identifiant numérique d'apprenants: "))
 	  consulterApprenantParId(id)
       break;

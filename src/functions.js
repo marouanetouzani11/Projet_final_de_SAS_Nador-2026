@@ -79,7 +79,7 @@ function ajouter_Apprenant(nomComplet, ville) {
 
 //this function search for un apprenant
 function consulterApprenantParId(id) {
-  if (isNaN(id) || id < 1 || id > apprenants.length) {
+  if (id < 1 || id > apprenants.length) {
     console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
     return;
   }
@@ -91,4 +91,9 @@ function consulterApprenantParId(id) {
       console.log("Ville: " + apprenants[i].ville);
     }
   }
+}
+
+//this function search by name for an apprenants
+function Rechercher_par_nom(Nom){
+
 }
