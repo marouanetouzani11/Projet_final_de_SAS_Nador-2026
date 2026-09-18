@@ -7,7 +7,7 @@ const {
   ajouter_Apprenant,
   consulterApprenantParId,
   Rechercher_par_nom,
-  nomaliserNom
+  
 } = require("./functions");
 
 

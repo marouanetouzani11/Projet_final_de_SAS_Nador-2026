@@ -7,9 +7,10 @@ module.exports = {
   consulterApprenantParId,
   Rechercher_par_nom,
   nomaliserNom,
+  Ajouter_modifier_résultat
 };
 
-//function pour Afficher le choix de menu
+//function pour Afficher les choix de menu
 function afichageMenu() {
   console.log("\n============================================");
   console.log("=        SAS PROGRESS CONSOLE         =");
@@ -33,6 +34,7 @@ function afichageMenu() {
 //this function make the name I inter more better it removes extra spaces and makes the name lower case
 function nomaliserNom(name) {
   let cleanName = name.toLowerCase().trim();
+  
   //I used this / it means the begginig of the command
   //I used this \s it means space and + measn extra spaces
   //I used this /g,
@@ -122,6 +124,19 @@ function Rechercher_par_nom(Nom) {
   }
   if (result.length === 0) {
     console.log("Il n'y a pas d'apprenant portant ce nom.");
+	return
   }
   console.log(result);
+}
+
+
+function Ajouter_modifier_résultat(id){
+	let cleanId = id.trim()
+	if(typeof cleanId == "number"){
+		for (let i = 0; i < apprenants.length; i++){
+			if(cleanId === apprenants[i].id){
+				console.log(apprenants[i])
+			}
+		}
+	}
 }
