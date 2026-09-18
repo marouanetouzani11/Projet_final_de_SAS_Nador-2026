@@ -14,6 +14,36 @@ const apprenants = [
         jour: 2,
         exercicesTermines: 14,
         totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 3,
+        exercicesTermines: 15,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 4,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 5,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 6,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 7,
+        exercicesTermines: 14,
+        totalExercices: 20,
         challengeTermine: false,
       },
     ],
@@ -26,6 +56,18 @@ const apprenants = [
       {
         jour: 1,
         exercicesTermines: 12,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 2,
+        exercicesTermines: 16,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 3,
+        exercicesTermines: 11,
         totalExercices: 20,
         challengeTermine: false,
       },
@@ -42,8 +84,70 @@ const apprenants = [
         totalExercices: 20,
         challengeTermine: true,
       },
+      {
+        jour: 2,
+        exercicesTermines: 19,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
     ],
   },
+  {
+    id: 4,
+    nomComplet: "Fatima Script",
+    ville: "Berkane",
+    resultats: [
+      {
+        jour: 1,
+        exercicesTermines: 15,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 2,
+        exercicesTermines: 13,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 3,
+        exercicesTermines: 17,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 4,
+        exercicesTermines: 16,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+    ],
+  },
+  {
+    id: 5,
+    nomComplet: "Mehdi Node",
+    ville: "Al Hoceima",
+    resultats: [
+      {
+        jour: 1,
+        exercicesTermines: 8,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 2,
+        exercicesTermines: 10,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+    ],
+  },
+  {
+    id: 6,
+    nomComplet: "Khadija Front",
+    ville: "Nador",
+    resultats: [],
+  },
 ];
-module.exports = { apprenants };
 
+module.exports = { apprenants };
