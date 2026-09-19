@@ -18,6 +18,10 @@ module.exports = {
 
 //function pour Afficher les choix de menu
 function afichageMenu() {
+	console.log();
+	console.log();
+	console.log();
+	
   console.log("\n============================================");
   console.log("=        	 SAS PROGRESS CONSOLE         =");
   console.log("============================================");
@@ -224,6 +228,8 @@ function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines,
 }
 
 
+
+
 function Filtrer_par_niveau(niveauDemande){
 	let trouve = false;
 
@@ -254,22 +260,22 @@ function Filtrer_par_niveau(niveauDemande){
 //this function calculate the progress of an apprenant
 function calcul_progression(result) {
   let totalFaits = 0;
-  let totalAssigne = 0;
+  let total = 0;
   let totalChallenges = 0;
 
   for (let i = 0; i < result.length; i++) {
     totalFaits = totalFaits + result[i].exercicesTermines;
-    totalAssigne = totalAssigne + result[i].totalExercices;
+    total = total + result[i].totalExercices;
 
     if (result[i].challengeTermine === true) {
       totalChallenges = totalChallenges + 1;
     }
   }
-  if (totalAssigne === 0) {
+  if (total === 0) {
     return 0;
   }
 
-  let percentage = (totalFaits / totalAssigne) * 100;
+  let percentage = (totalFaits / total) * 100;
   return Math.floor(percentage);
 }
 
@@ -283,4 +289,10 @@ function Level_helper(level) {
   } else {
     return "Debutant";
   }
+}
+
+function trierParProgression() {
+  let copie = [...apprenants];
+
+  
 }
