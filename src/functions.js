@@ -11,7 +11,8 @@ module.exports = {
   Ajouter_modifier_résultat,
   Filtrer_par_niveau,
   Level_helper,
-  calcul_progression
+  calcul_progression,
+  trierParProgression
 };
 
 
@@ -294,5 +295,16 @@ function Level_helper(level) {
 function trierParProgression() {
   let copie = [...apprenants];
 
-  
+  for (let i = 0; i < copie.length; i++) {
+    for (let j = i + 1; j < copie.length; j++) {
+      let scoreA = calcul_progression(copie[i].resultats);
+      let scoreB = calcul_progression(copie[j].resultats);
+
+      if (scoreA < scoreB) {
+        let temp = copie[i];
+        copie[i] = copie[j];
+        copie[j] = temp;
+      }
+    }
+  }
 }
