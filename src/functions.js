@@ -224,29 +224,6 @@ function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines,
 }
 
 
-
-//this function calculate the progress of an apprenant
-function calcul_progression(result) {
-  let totalFaits = 0;
-  let totalAssigne = 0;
-  let totalChallenges = 0;
-
-  for (let i = 0; i < result.length; i++) {
-    totalFaits = totalFaits + result[i].exercicesTermines;
-    totalAssigne = totalAssigne + result[i].totalExercices;
-
-    if (result[i].challengeTermine === true) {
-      totalChallenges = totalChallenges + 1;
-    }
-  }
-  if (totalAssigne === 0) {
-    return 0;
-  }
-
-  let percentage = (totalFaits / totalAssigne) * 100;
-  return Math.floor(percentage);
-}
-
 function Filtrer_par_niveau(niveauDemande){
 	let trouve = false;
 
@@ -272,12 +249,38 @@ function Filtrer_par_niveau(niveauDemande){
   }
 }
 
+
+
+//this function calculate the progress of an apprenant
+function calcul_progression(result) {
+  let totalFaits = 0;
+  let totalAssigne = 0;
+  let totalChallenges = 0;
+
+  for (let i = 0; i < result.length; i++) {
+    totalFaits = totalFaits + result[i].exercicesTermines;
+    totalAssigne = totalAssigne + result[i].totalExercices;
+
+    if (result[i].challengeTermine === true) {
+      totalChallenges = totalChallenges + 1;
+    }
+  }
+  if (totalAssigne === 0) {
+    return 0;
+  }
+
+  let percentage = (totalFaits / totalAssigne) * 100;
+  return Math.floor(percentage);
+}
+
+
+
 function Level_helper(level) {
 	if (level >= 80) {
-    return "Avancé";
+    return "Avance";
   } else if (level >= 50 && level <= 79) {
-    return "Intermédiaire";
+    return "Intermediaire";
   } else {
-    return "Débutant";
+    return "Debutant";
   }
 }

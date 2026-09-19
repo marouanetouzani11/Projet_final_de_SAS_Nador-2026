@@ -9,9 +9,6 @@ const {
   Rechercher_par_nom,
   Ajouter_modifier_résultat,
   Filtrer_par_niveau,
-  Level_helper,
-  calcul_progression
-  
 } = require("./functions");
 
 
@@ -64,7 +61,7 @@ do {
 
     case 7:
 		dicoration("7- Filtrer par niveau");
-		let niveauChoisi = prompt("Entrez le niveau (Débutant, Intermédiaire, Avancé) : ");
+		let niveauChoisi = prompt("Entrez le niveau (Debutant, Intermediaire, Avance) : ");
 		Filtrer_par_niveau(niveauChoisi);
 		break;
 
