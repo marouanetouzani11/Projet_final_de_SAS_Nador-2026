@@ -273,7 +273,6 @@ function Filtrer_par_niveau(niveauDemande){
 }
 
 function Level_helper(level) {
-  
 	if (level >= 80) {
     return "Avancé";
   } else if (level >= 50 && level <= 79) {
