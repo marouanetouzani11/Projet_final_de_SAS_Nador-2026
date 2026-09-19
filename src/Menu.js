@@ -9,6 +9,7 @@ const {
   Rechercher_par_nom,
   Ajouter_modifier_résultat,
   Filtrer_par_niveau,
+  trierParProgression
 } = require("./functions");
 
 
@@ -62,12 +63,17 @@ do {
     case 7:
 		dicoration("7- Filtrer par niveau");
 		let niveauChoisi = prompt("Entrez le niveau (Debutant, Intermediaire, Avance) : ");
+		console.log("\n============================================");
 		Filtrer_par_niveau(niveauChoisi);
+		console.log("============================================");
 		break;
 
     case 8:
-      dicoration("8- Trier les apprenants par progression décroissante: Coming Soon");
-      break;
+		console.log("\n==============================================");
+		console.log("   8 - Trier les apprenants par progression   ");
+		console.log("==============================================\n");
+		trierParProgression();
+		break;
 
     case 9:
       dicoration("9- Trier les apprenants par ordre alphabétique: Coming Soon");

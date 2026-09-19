@@ -307,4 +307,18 @@ function trierParProgression() {
       }
     }
   }
+
+  console.log("=== Classement des apprenants (Par progression) ===");
+
+  for (let i = 0; i < copie.length; i++) {
+    let etudiant = copie[i];
+    let score = calcul_progression(etudiant.resultats);
+    let niveau = Level_helper(score);
+
+    console.log(
+      (i + 1) + ". " + etudiant.nomComplet + " - " + score + "% (" + niveau + ")"
+    );
+  }
+
+  return copie;
 }
