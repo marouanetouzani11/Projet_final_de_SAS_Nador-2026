@@ -106,7 +106,7 @@ function ajouter_Apprenant(nomComplet, ville) {
 
 
 
-//this function search for un apprenant
+//this function search for un apprenant by hes id
 function consulterApprenantParId(id) {
   if (id < 1 || id > apprenants.length) {
     console.log("=>Erreur : Veuillez entrer un identifiant numérique valide.");
@@ -144,14 +144,15 @@ function Rechercher_par_nom(Nom) {
     console.log("=>Il n'y a pas d'apprenant portant ce nom.");
     return;
   }
-  console.log(result);
+  console.table(result);
 }
 
 
 
+//this function find apprenants by Id and change it's days and exercices completed number and if the apprenant make the challenge or not
 function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines, challengeTermine) {
   const numericId = Number(id);
-  if (isNaN(numericId) || numericId < 1) {
+  if (numericId < 1) {
     console.log("Erreur : Veuillez entrer un identifiant numérique valide.");
     return null;
   }
@@ -170,21 +171,19 @@ function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines,
   }
 
   const numericJour = Number(jour);
-  if (isNaN(numericJour) || numericJour < 1 || numericJour > 7) {
+  if (numericJour < 1 || numericJour > 7) {
     console.log("Erreur : Le numéro de jour valide est compris entre 1 et 7.");
     return null;
   }
 
   const numerictotalExercices = Number(totalExercices);
-  if (isNaN(numerictotalExercices) || numerictotalExercices < 1 || numerictotalExercices > 20) {
+  if (numerictotalExercices < 1 || numerictotalExercices > 20) {
     console.log("Erreur : Le numéro de total Exercices valide est compris entre 1 et 20.");
     return null;
   }
 
   const numericExercicesTermines = Number(exercicesTermines);
-  if (
-    isNaN(numericExercicesTermines) || numericExercicesTermines < 0 || numericExercicesTermines > numerictotalExercices
-  ) {
+  if (numericExercicesTermines < 0 || numericExercicesTermines > numerictotalExercices) {
     console.log("Erreur : Les exercices terminés doivent être compris entre 0 et " + numerictotalExercices + ".");
     return null;
   }
@@ -218,6 +217,20 @@ function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines,
     etudiantTrouve.resultats.push(nouveauResultat);
     console.log(`Résultat du Jour ${numericJour} ajouté avec succès pour ${etudiantTrouve.nomComplet}.`);
   }
-
   return etudiantTrouve;
+}
+
+function calcul_progression(apprenant){
+	let totalFaits = 0;
+	let totalAssigne = 0;
+	let totalChallenges = 0;
+
+	for(let i = 0; i < apprenant.resultats.length; i++){
+		totalFaits = totalFaits + apprenant.result[i].exercicesTermines;
+		totalAssigne = totalAssigne + apprenant.result[i].totalExercices;
+		if(apprenant.result[i].challengeTermine === true ){
+			totalChallenges + 1
+		}
+	}
+	let percentage = (totalFaits / totalAssigne) * 100
 }

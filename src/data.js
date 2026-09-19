@@ -76,7 +76,7 @@ const apprenants = [
   {
     id: 3,
     nomComplet: "Aymane Bombes",
-    ville: "El hajeb",
+    ville: "Casa Blanca",
     resultats: [
       {
         jour: 1,
@@ -94,7 +94,7 @@ const apprenants = [
   },
   {
     id: 4,
-    nomComplet: "Fatima Script",
+    nomComplet: "Fatima Slimani",
     ville: "Berkane",
     resultats: [
       {
@@ -125,7 +125,7 @@ const apprenants = [
   },
   {
     id: 5,
-    nomComplet: "Mehdi Node",
+    nomComplet: "Mehdi Oumlil",
     ville: "Al Hoceima",
     resultats: [
       {
@@ -144,10 +144,58 @@ const apprenants = [
   },
   {
     id: 6,
-    nomComplet: "Khadija Front",
-    ville: "Nador",
+    nomComplet: "Salim Ibrahimi",
+    ville: "Azrou",
     resultats: [],
-  },
+  },{
+    id: 1,
+    nomComplet: "Sara Dev",
+    ville: "Nador",
+    resultats: [
+      {
+        jour: 1,
+        exercicesTermines: 18,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 2,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 3,
+        exercicesTermines: 15,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 4,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: true,
+      },
+      {
+        jour: 5,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 6,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+      {
+        jour: 7,
+        exercicesTermines: 14,
+        totalExercices: 20,
+        challengeTermine: false,
+      },
+    ],
+  }
 ];
 
 module.exports = { apprenants };
