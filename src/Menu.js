@@ -7,7 +7,10 @@ const {
   ajouter_Apprenant,
   consulterApprenantParId,
   Rechercher_par_nom,
-  Ajouter_modifier_résultat
+  Ajouter_modifier_résultat,
+  Filtrer_par_niveau,
+  Level_helper,
+  calcul_progression
   
 } = require("./functions");
 
@@ -60,8 +63,10 @@ do {
       break;
 
     case 7:
-      dicoration("7- Filtrer les apprenants par niveau: Coming Soon");
-      break;
+		dicoration("7- Filtrer par niveau");
+		let niveauChoisi = prompt("Entrez le niveau (Débutant, Intermédiaire, Avancé) : ");
+		Filtrer_par_niveau(niveauChoisi);
+		break;
 
     case 8:
       dicoration("8- Trier les apprenants par progression décroissante: Coming Soon");

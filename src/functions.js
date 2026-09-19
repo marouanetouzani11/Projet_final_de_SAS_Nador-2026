@@ -9,6 +9,9 @@ module.exports = {
   Rechercher_par_nom,
   nomaliserNom,
   Ajouter_modifier_résultat,
+  Filtrer_par_niveau,
+  Level_helper,
+  calcul_progression
 };
 
 
@@ -220,17 +223,62 @@ function Ajouter_modifier_résultat(id, jour, totalExercices, exercicesTermines,
   return etudiantTrouve;
 }
 
-function calcul_progression(apprenant){
-	let totalFaits = 0;
-	let totalAssigne = 0;
-	let totalChallenges = 0;
 
-	for(let i = 0; i < apprenant.resultats.length; i++){
-		totalFaits = totalFaits + apprenant.result[i].exercicesTermines;
-		totalAssigne = totalAssigne + apprenant.result[i].totalExercices;
-		if(apprenant.result[i].challengeTermine === true ){
-			totalChallenges + 1
-		}
-	}
-	let percentage = (totalFaits / totalAssigne) * 100
+
+//this function calculate the progress of an apprenant
+function calcul_progression(result) {
+  let totalFaits = 0;
+  let totalAssigne = 0;
+  let totalChallenges = 0;
+
+  for (let i = 0; i < result.length; i++) {
+    totalFaits = totalFaits + result[i].exercicesTermines;
+    totalAssigne = totalAssigne + result[i].totalExercices;
+
+    if (result[i].challengeTermine === true) {
+      totalChallenges = totalChallenges + 1;
+    }
+  }
+  if (totalAssigne === 0) {
+    return 0;
+  }
+
+  let percentage = (totalFaits / totalAssigne) * 100;
+  return Math.floor(percentage);
+}
+
+function Filtrer_par_niveau(niveauDemande){
+	let trouve = false;
+
+  console.log("--- Liste des apprenants (" + niveauDemande + ") ---");
+
+  for (let i = 0; i < apprenants.length; i++) {
+    let etudiant = apprenants[i];
+
+    let score = calcul_progression(etudiant.resultats);
+
+    let niveau = Level_helper(score);
+
+    if (niveau.toLowerCase() === niveauDemande.toLowerCase()) {
+      console.log(
+        etudiant.nomComplet + " | Ville : " + etudiant.ville + " | Score : " + score + "%"
+      );
+      trouve = true;
+    }
+  }
+
+  if (!trouve) {
+    console.log("Aucun apprenant trouvé avec le niveau : " + niveauDemande);
+  }
+}
+
+function Level_helper(level) {
+  
+	if (level >= 80) {
+    return "Avancé";
+  } else if (level >= 50 && level <= 79) {
+    return "Intermédiaire";
+  } else {
+    return "Débutant";
+  }
 }
